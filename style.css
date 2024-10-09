@@ -1,0 +1,116 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #87CEEB, #E0F6FF);
+    overflow: hidden;
+}
+
+.scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.sun {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, #FFD700, #FFA500);
+    border-radius: 50%;
+    box-shadow: 0 0 50px #FFD700;
+    animation: sun-glow 5s infinite alternate;
+}
+
+.grass {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30%;
+    overflow: hidden;
+}
+
+.grass::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 200%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        90deg,
+        #228B22,
+        #228B22 15px,
+        #32CD32 15px,
+        #32CD32 30px
+    );
+    animation: wind 10s linear infinite;
+}
+
+.flower {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform-origin: bottom center;
+    animation: flower-sway 3s ease-in-out infinite;
+}
+
+.stem {
+    width: 6px;
+    height: 150px;
+    background-color: #228B22;
+    margin: 0 auto;
+    position: relative;
+}
+
+.blossom {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    top: -40px;
+}
+
+.petal {
+    width: 40px;
+    height: 40px;
+    background-color: #FF69B4;
+    border-radius: 50% 0 50% 50%;
+    position: absolute;
+    transform-origin: bottom right;
+}
+
+.petal:nth-child(1) { transform: rotate(0deg); }
+.petal:nth-child(2) { transform: rotate(72deg); }
+.petal:nth-child(3) { transform: rotate(144deg); }
+.petal:nth-child(4) { transform: rotate(216deg); }
+.petal:nth-child(5) { transform: rotate(288deg); }
+
+.center {
+    width: 30px;
+    height: 30px;
+    background-color: #FFD700;
+    border-radius: 50%;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+}
+
+@keyframes sun-glow {
+    0% { box-shadow: 0 0 50px #FFD700; }
+    100% { box-shadow: 0 0 100px #FFD700; }
+}
+
+@keyframes wind {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes flower-sway {
+    0% { transform: translateX(-50%) rotate(-5deg); }
+    50% { transform: translateX(-50%) rotate(5deg); }
+    100% { transform: translateX(-50%) rotate(-5deg); }
+}
